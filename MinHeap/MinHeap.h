@@ -2,14 +2,14 @@
 #ifndef HEAP
 #define HEAP
 #include <iostream>
-#include "HuffmanNode.h"
 using namespace std;
+template <typename TYPE>
 #define SIZE 256
 
 class MinHeap
 {
 private:
-    HuffmanNode *Data[SIZE];
+    TYPE Data[SIZE];
     int index;
 
 public:
@@ -25,7 +25,7 @@ public:
     {
         return (index == 0);
     }
-    void Insert(HuffmanNode *node)
+    void Insert(TYPE node)
     {
         Data[index] = node;
         index++;
@@ -34,7 +34,7 @@ public:
         while (i > 0)
         {
             int parent = (i - 1) / 2;
-            if (Data[i]->frequency < Data[parent]->frequency)
+            if (Data[i] < Data[parent])
             {
                 swap(Data[i], Data[parent]);
                 i = parent;
@@ -43,14 +43,14 @@ public:
                 break;
         }
     }
-    HuffmanNode *ExtractMin()
+    TYPE ExtractMin()
     {
         Display();
         cout<<"[-=-=-=--==]\n";
         if (isEmpty())
             return NULL;
 
-        HuffmanNode *Min = Data[0];
+        TYPE Min = Data[0];
 
         Data[0] = Data[index - 1];
         index--;
@@ -62,10 +62,10 @@ public:
             int right = 2 * i + 2;
             int smallest = i;
 
-            if (left < index && Data[left]->frequency < Data[smallest]->frequency)
+            if (left < index && Data[left] < Data[smallest])
                 smallest = left;
 
-            if (right < index && Data[right]->frequency < Data[smallest]->frequency)
+            if (right < index && Data[right]- < Data[smallest])
                 smallest = right;
 
             if (smallest != i)
@@ -83,7 +83,7 @@ public:
     {
         for (int i = 0; i < index; i++)
         {
-            cout << Data[i]->character << " -> " << Data[i]->frequency << "\n";
+            cout << Data[i] << " -> " << Data[i] << "\n";
         }
     }
 };
