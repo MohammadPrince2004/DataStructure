@@ -1,6 +1,5 @@
 
-#ifndef HEAP
-#define HEAP
+
 #include <iostream>
 using namespace std;
 template <typename TYPE>
@@ -48,7 +47,7 @@ public:
         Display();
         cout<<"[-=-=-=--==]\n";
         if (isEmpty())
-            return NULL;
+            return TYPE{};
 
         TYPE Min = Data[0];
 
@@ -65,7 +64,7 @@ public:
             if (left < index && Data[left] < Data[smallest])
                 smallest = left;
 
-            if (right < index && Data[right]- < Data[smallest])
+            if (right < index && Data[right] < Data[smallest])
                 smallest = right;
 
             if (smallest != i)
@@ -83,9 +82,7 @@ public:
     {
         for (int i = 0; i < index; i++)
         {
-            cout << Data[i] << " -> " << Data[i] << "\n";
+            cout << i << " -> " << Data[i] << "\n";
         }
     }
 };
-
-#endif
