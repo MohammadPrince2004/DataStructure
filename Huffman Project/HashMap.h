@@ -34,8 +34,9 @@ public:
         else
         {
             LL.InsertAtLast(key, value);
+            ExistingElements = ExistingElements + 1;
         }
-        ExistingElements = ExistingElements + 1;
+        
     }
     TYPE Get(char key)
     {
